@@ -69,3 +69,6 @@ build/
 
 # Kotlin
 .kotlin/
+
+# Run Paper
+run/

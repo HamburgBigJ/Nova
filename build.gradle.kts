@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.paperweight) apply false
     id("xyz.xenondevs.bundler-jar-plugin")
     alias(libs.plugins.pluginPublish)
+    alias(libs.plugins.runPaper)
 }
 
 fun RepositoryHandler.configureRepos() {
@@ -55,6 +56,20 @@ subprojects {
                 }
             }
         }
+    }
+}
+
+tasks {
+    runServer {
+        dependsOn(loaderJar)
+
+        pluginJars(file("build/Nova-0.19-alpha.7+MC-1.21.5.jar"))
+
+        minecraftVersion("1.21.5")
+    }
+
+    runPaper {
+        disablePluginJarDetection()
     }
 }
 
